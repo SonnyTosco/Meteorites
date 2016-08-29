@@ -1,11 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<meta name="description" content="Keep track of meteorites in your area!">	<title>Meteorites - Main Page</title>
+	<meta name="description" content="Stardate - Your date under the stars!">	<title>Stardate - Your date under the stars!</title>
+
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	
+
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -16,7 +22,13 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 	<script>
-			$(document).ready(function() {
+		$(document).ready(function() {
+
+			$( "button" ).click(function() {
+				$( "id" ).toggle();
+				$( "#pastaccordion" ).accordion();
+				$( "#futureaccordion" ).accordion();
+			});				
 
 				// Handle updating posts:
 				$('form').submit(function() {
@@ -26,39 +38,77 @@
 					return false;
 				});
 			});
-	</script>	
+		</script>	
 
-</head>
-<body>
-	<div class='container'>
-	<!-- Only viewable by logged in members -->
-	<!-- List events within range here -->
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Panel title</h3>
+	</head>
+	<body>
+		<div class='container'>
+			<div class="col-sm-12"></div>
+			<div class='map'>
 			</div>
-			<div class="panel-body">
-				Panel content
+			<div class='dates'>
+				<button>Past Sightings</button>
+				<button>Future Sightings</button>
+			</div>
+			<div id='pastaccordion'>
+				<h3>Metorite in Arizona 4:20</h3>
+				<div>
+					<p>My friend told me about this on BMail! Sucks to miss it. </p>
+					<form action="/event/{{event['id']}}" method="POST">
+						<input type="textarea" name="comment">
+						<input type='submit' value="Post">
+					</form>
+				</div>
+				<h3>Metorite in Scotland 4:20</h3>
+				<div>
+					<p>I seent it</p>
+					<form action="/event/{{event['id']}}" method="POST">
+						<input type="textarea" name="comment">
+						<input type='submit' value="Post">
+					</form>
+				</div>
+				<h3>Metorite in Moscow 4:20</h3>
+				<div>
+					<p>Couldn't find this one on BingEarth. Help?</p>
+					<form action="/event/{{event['id']}}" method="POST">
+						<input type="textarea" name="comment">
+						<input type='submit' value="Post">
+					</form>
+				</div>
+			</div>
+			<div id='futureaccordion' style="display: none">
+				<h3>Sep 1st- Viewing Party in San Jose, CA. 32 people attending</h3>
+				<div>
+					<p>My friend told me about this on BMail! Sucks to miss it. </p>
+					<form action="/futureevent/{{event['id']}}" method="POST">
+						<input type="textarea" name="comment"><br>
+						<input type="radio" name="telescope" value="Yes">Yes
+						<input type="radio" name="telescope" value="No">No
+						<input type='submit' value="Post">
+					</form>
+				</div>
+				<h3>Sep 4th- Viewing Party in San Jose, CA. 32 people attending</h3>
+				<div>
+					<p>I seent it</p>
+					<form action="/futureevent/{{event['id']}}" method="POST">
+						<input type="textarea" name="comment"><br>
+						<input type="radio" name="telescope" value="Yes">Yes
+						<input type="radio" name="telescope" value="No">No
+						<input type='submit' value="Post">
+					</form>
+				</div>
+				<h3>Sep 6th- Viewing Party in San Jose, CA. 32 people attending</h3>
+				<div>
+					<p>Couldn't find this one on BingEarth. Help?</p>
+					<form action="/futureevent/{{event['id']}}" method="POST">
+						<input type="textarea" name="comment"><br>
+						<input type="radio" name="telescope" value="Yes">Yes
+						<input type="radio" name="telescope" value="No">No
+						<input type='submit' value="Post">
+					</form>
+				</div>
 			</div>
 		</div>
-		
-		<h1>My Posts</h1>
-		<div id="posts">
-		{% for post in posts %}
-			<div class="post col-sm-3">
-				<p>{{ post['post'] }}</p>
-			</div>
-		{% endfor %}				
-		</div>
-
-		<div class="col-sm-12">
-			<form action="/posts/create" method="post">
-				<label>Add a note:</label><br>
-				<textarea name="post"></textarea>
-				<input type="submit" value="Post it">
-			</form>
-		</div>
-
 	</div>
 </body>
 </html>

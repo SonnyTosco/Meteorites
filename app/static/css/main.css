@@ -1,0 +1,25 @@
+.container{
+  background-color: green;
+  width: 100%;
+  height: 100%
+}
+
+.map{
+  background-color: grey;
+  width: 100%;
+  height: 35%
+}
+
+.dates{
+  text-align: center;
+}
+
+#pastaccordion{
+  width: 100%;
+  height: 65%;
+}
+
+#futureaccordion{
+  width: 100%;
+  height: 65%;
+}
