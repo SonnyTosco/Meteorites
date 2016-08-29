@@ -19,11 +19,6 @@ class Users(Controller):
 			return self.load_view('dashboard.html')
 		return redirect('/')
 
-	def login(self):
-		if session.get('id'):
-			return redirect('/')
-		return self.load_view('login.html')
-
 	def logout(self):
 		session.clear()
 		return redirect('/')				
@@ -33,19 +28,17 @@ class Users(Controller):
 		output = self.models['User'].login(request.form)
 		if output['status'] == True:
 			session['id'] = output['user']['id']
-			return redirect('/')
 		else:
 			for message in output['log']:
 				flash(message, 'error')
-			return redirect('/login')
+		return redirect('/')
 
 	def register_user(self):
 		output = self.models['User'].register(request.form)
 		if output['status'] == True:
 			session['id'] = output['user']['id']
-			return redirect('/')
 		else:
 			for message in output['log']:
 				flash(message, 'error')
-			return redirect('/login')
+		return redirect('/')
 

@@ -2,7 +2,6 @@ from system.core.router import routes
 
 routes['default_controller'] = 'Users'
 routes['GET']['/dashboard'] = 'Users#dashboard'
-routes['GET']['/login'] = 'Users#login'
 routes['GET']['/logout'] = 'Users#logout'
 routes['POST']['/login_user'] = 'Users#login_user'
 routes['POST']['/register_user'] = 'Users#register_user'

@@ -13,7 +13,9 @@ class Posts(Controller):
 	def add_post(self):
 		output = self.models['Post'].add_post(request.form)
 		if output['status'] == False:
-		return redirect('/')
+			pass
+		else:
+			return redirect('/')
 
 	def delete_post(self):
 		output = self.models['Post'].delete_post(request.form)
