@@ -15,12 +15,49 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+	<script>
+			$(document).ready(function() {
+
+				// Handle updating posts:
+				$('form').submit(function() {
+					$.post('/posts/add_post', $(this).serialize(), function(res) {
+						$('#posts').html(res);
+					});
+					return false;
+				});
+			});
+	</script>	
+
 </head>
 <body>
 	<div class='container'>
 	<!-- Only viewable by logged in members -->
 	<!-- List events within range here -->
-		
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Panel title</h3>
+			</div>
+			<div class="panel-body">
+				Panel content
+			</div>
+		</div>
+		<h1>My Posts</h1>
+		<div id="posts">
+		{% for post in posts %}
+			<div class="post col-sm-3">
+				<p>{{ post['post'] }}</p>
+			</div>
+		{% endfor %}				
+		</div>
+
+		<div class="col-sm-12">
+			<form action="/posts/create" method="post">
+				<label>Add a note:</label><br>
+				<textarea name="post"></textarea>
+				<input type="submit" value="Post it">
+			</form>
+		</div>
+
 	</div>
 </body>
 </html>
