@@ -28,3 +28,8 @@ button {
 	background-color:#2baff1 ;
 	color: white;
 }
+
+.container {
+	background: white;
+	opacity: .8;
+}

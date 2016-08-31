@@ -1,17 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<meta name="description" content="Stardate - Your date under the stars!">	<title>Stardate - Your date under the stars!</title>
-
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-
-	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-
-	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<meta name="description" content="Keep track of meteorites in your area!">
+	<title>Stardate - Upcoming events</title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+		
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -21,94 +18,111 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-	<script>
-		$(document).ready(function() {
+	<!-- Backstretch plugin -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
 
-			$( "button" ).click(function() {
-				$( "id" ).toggle();
-				$( "#pastaccordion" ).accordion();
-				$( "#futureaccordion" ).accordion();
-			});				
+	<script src="/static/js/main.js"></script>
 
-				// Handle updating posts:
-				$('form').submit(function() {
-					$.post('/posts/add_post', $(this).serialize(), function(res) {
-						$('#posts').html(res);
-					});
-					return false;
-				});
-			});
-		</script>	
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">Stardate</a>
+			</div>
 
-	</head>
-	<body>
-		<div class='container'>
-			<div class="col-sm-12"></div>
-			<div class='map'>
-			</div>
-			<div class='dates'>
-				<button>Past Sightings</button>
-				<button>Future Sightings</button>
-			</div>
-			<div id='pastaccordion'>
-				<h3>Metorite in Arizona 4:20</h3>
-				<div>
-					<p>My friend told me about this on BMail! Sucks to miss it. </p>
-					<form action="/event/{{event['id']}}" method="POST">
-						<input type="textarea" name="comment">
-						<input type='submit' value="Post">
-					</form>
-				</div>
-				<h3>Metorite in Scotland 4:20</h3>
-				<div>
-					<p>I seent it</p>
-					<form action="/event/{{event['id']}}" method="POST">
-						<input type="textarea" name="comment">
-						<input type='submit' value="Post">
-					</form>
-				</div>
-				<h3>Metorite in Moscow 4:20</h3>
-				<div>
-					<p>Couldn't find this one on BingEarth. Help?</p>
-					<form action="/event/{{event['id']}}" method="POST">
-						<input type="textarea" name="comment">
-						<input type='submit' value="Post">
-					</form>
-				</div>
-			</div>
-			<div id='futureaccordion' style="display: none">
-				<h3>Sep 1st- Viewing Party in San Jose, CA. 32 people attending</h3>
-				<div>
-					<p>My friend told me about this on BMail! Sucks to miss it. </p>
-					<form action="/futureevent/{{event['id']}}" method="POST">
-						<input type="textarea" name="comment"><br>
-						<input type="radio" name="telescope" value="Yes">Yes
-						<input type="radio" name="telescope" value="No">No
-						<input type='submit' value="Post">
-					</form>
-				</div>
-				<h3>Sep 4th- Viewing Party in San Jose, CA. 32 people attending</h3>
-				<div>
-					<p>I seent it</p>
-					<form action="/futureevent/{{event['id']}}" method="POST">
-						<input type="textarea" name="comment"><br>
-						<input type="radio" name="telescope" value="Yes">Yes
-						<input type="radio" name="telescope" value="No">No
-						<input type='submit' value="Post">
-					</form>
-				</div>
-				<h3>Sep 6th- Viewing Party in San Jose, CA. 32 people attending</h3>
-				<div>
-					<p>Couldn't find this one on BingEarth. Help?</p>
-					<form action="/futureevent/{{event['id']}}" method="POST">
-						<input type="textarea" name="comment"><br>
-						<input type="radio" name="telescope" value="Yes">Yes
-						<input type="radio" name="telescope" value="No">No
-						<input type='submit' value="Post">
-					</form>
-				</div>
-			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/">Star events</a></li>
+					<li><a href="/users/edit">Profile</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/users/edit">Edit profile</a></li>
+							<li><a href="/users/show/{{session['user_id']}}">View messages</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="/logout">Logout</a></li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/logout">Logout</a></li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav><!-- End navbar -->
+
+	<div class='container'>
+	<div class="col-sm-12">
+		<div class="panel panel-default">
+			<!-- Default panel contents -->
+			<div class="panel-heading"><h4>All events</h4></div>
+
+			<!-- Table -->
+			<table class="table">
+			<thead>
+				<tr>
+					<th>Meteor</th>	
+					<th>Date</th>	
+					<th>Diameter (km)</th>	
+					<th>Distance (km)</th>	
+					<th>Joining?</th>	
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="/view">Meteor 1</a></td>
+					<td>September 1, 2016</td>					
+					<td>10</td>					
+					<td>1000</td>					
+					<td><a href=""><button class="btn btn-default going">Going!</button></a></td>					
+				</tr>						
+				<tr>
+					<td><a href="/view">Meteor 2</a></td>
+					<td>September 1, 2016</td>					
+					<td>10</td>					
+					<td>1000</td>					
+					<td><a href=""><button class="btn join">Join</button></a></td>					
+				</tr>			
+				<tr>
+					<td><a href="/view">Meteor 3</a></td>
+					<td>September 1, 2016</td>					
+					<td>10</td>					
+					<td>1000</td>					
+					<td><a href=""><button class="btn join">Join</button></a></td>					
+				</tr>			
+				<tr>
+					<td><a href="/view">Meteor 4</a></td>
+					<td>September 1, 2016</td>					
+					<td>10</td>					
+					<td>1000</td>					
+					<td><a href=""><button class="btn btn-default going">Going!</button></a></td>					
+				</tr>															
+				{% for user in users %}
+					{% if user['id'] != session['user_id'] %}
+						<tr>
+							<td>{{user['id']}}</td>
+							<td><a href="/users/show/{{user['id']}}">
+									{{user['first_name']}} {{user['last_name']}}
+								</a>
+							</td>							<td>{{user['email']}}</td>
+							<td>{{user['user_date']}}</td>
+							<td>{{user['level']}}</td>
+						</tr>
+					{% endif %}
+				{% endfor %}
+			</tbody>
+			</table>
 		</div>
 	</div>
+</div>
 </body>
 </html>

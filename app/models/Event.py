@@ -2,9 +2,9 @@ from __future__ import print_function
 from system.core.model import Model
 import sys
 
-class event(Model):
+class Event(Model):
 	def __init__(self):
-		super(event, self).__init__()
+		super(Event, self).__init__()
 
 
 	def get_event(self, event_id):

@@ -14,6 +14,9 @@ class Users(Controller):
 			return self.load_view('main.html')
 		return self.load_view('welcome.html')
 
+	def main(self):
+		return self.load_view('main.html')
+
 	def dashboard(self):
 		if session.get('id'):
 			return self.load_view('dashboard.html')

@@ -8,3 +8,12 @@ class Events(Controller):
 		self.db = self._app.db
 
 	############### GET ###################
+	def join(self):
+		pass
+
+	def unjoin(self):
+		pass
+
+	def view(self):
+		return self.load_view('view.html')
+
