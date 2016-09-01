@@ -1,4 +1,6 @@
-from system.core.controller import *
+from __future__ import print_function
+import sys
+from system.core.controllindex
 
 class Events(Controller):
 	def __init__(self, action):
@@ -8,12 +10,10 @@ class Events(Controller):
 		self.db = self._app.db
 
 	############### GET ###################
-	def join(self):
-		pass
-
-	def unjoin(self):
-		pass
-
 	def view(self):
 		return self.load_view('view.html')
 
+	############### POST ###################
+	def index(self, event_id):
+		self.model['Event'].toggle_join(session['id'], event_id)
+		return redirect('/')

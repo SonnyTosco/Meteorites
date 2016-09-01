@@ -1,0 +1,8 @@
+.alert {
+	text-align: center;
+	opacity: 0.85;
+}
+
+.alert:hover {
+	opacity: 1;
+}

@@ -8,5 +8,30 @@
 }*/
 
 .panel-body {
-background: rgba(46, 51, 56, 0.2)!important;
+	background: #2f2f2f;
+/*background: rgba(46, 51, 56, 0.2)!important;*/
+}
+
+#myCarousel {
+		opacity: 0.85;
+}
+
+#myCarousel:hover {
+		opacity: 1;
+}
+
+.carousel-caption {
+		opacity: 0.7;	
+}
+
+.carousel-caption:hover {
+		opacity: 1;
+}
+
+.panel {
+		opacity: 0.85;
+}
+
+.panel:hover {
+		opacity: 1;
 }

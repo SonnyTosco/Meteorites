@@ -1,6 +1,6 @@
-/** {
+* {
 	color: white;
-}*/
+}
 /*
 .item img {
 	height:300px; 
@@ -8,11 +8,27 @@
 }*/
 
 .panel-body {
-background: rgba(46, 51, 56, 0.2)!important;
+/*background: rgba(46, 51, 56, 0.2)!important;*/
 }
 
 .panel {
-	opacity: 0.8;
+	opacity: 0.85;
+}
+
+/*.panel:hover {
+	opacity: 1;
+}*/
+/*.panel:hover {
+	opacity: 1;
+}*/
+
+tr {
+	background: #323232;
+	opacity: 0.85;
+}
+
+tr:hover {
+	opacity: 1;
 }
 
 button {
@@ -21,10 +37,17 @@ button {
 }
 
 .going {
-
+	background-color:white;	
+	color: black;
 }
 
 .join {
 	background-color:#2baff1 ;
 	color: white;
 }
+
+td a {
+	font-weight: bold;
+	color: #2baff1;
+}
+

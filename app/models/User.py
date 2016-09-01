@@ -1,3 +1,5 @@
+from __future__ import print_function
+import sys
 from system.core.model import Model
 import re
 
@@ -12,32 +14,24 @@ class User(Model):
 						"""
 		return self.db.query_db(query, data)
 
-	def login(self, data):
-		log = []
-
-		for key, value in data.iteritems():
-			if len(value) == 0:
-				log.append('Login error: email/password cannot be empty.')
-				return {'status': False, 'log': log}
-
-		query = "SELECT * FROM users WHERE email = :email LIMIT 1"		
+	def login_user(self, data):
+		query = "SELECT * FROM users WHERE id = :id LIMIT 1"	
+		print("DATA", file=sys.stderr)
+		print(data, file=sys.stderr)			
 		user = self.db.query_db(query, data)
+		print("USER INFO", file=sys.stderr)
+		print(user, file=sys.stderr)
 
-		# If registered email found:
-		if len(user) != 0:
-			# Check if password is correct:
-			if self.bcrypt.check_password_hash(user[0]['password'], data['password']):
-				return {'status': True, 'log': log, 'user': user[0]}
-			# Incorrect password:
-			else:
-				log.append('Login error: incorrect password, please try again.')
-				return {'status': False, 'log': log}
+		# If new user:
+		if len(user) == 0:
+			# Add user to database:
+			query = """INSERT INTO users (id, created_at, updated_at)
+								VALUES (:id, NOW(), NOW())
+							"""
+			self.db.query_db(query, data)
+			return {'log': ['Greetings, {}! Please enjoy your stay amongst the stars!'.format(data['name'])]}
 
-		# Else email not registered:
-		else:
-			log.append('Login error: email not found, please register.')
-			return {'status': False, 'log': log}
-
+		return {'log': ['Welcome back, {}!'.format(data['name'])]}							
 
 	def register(self, data):
 		log = []

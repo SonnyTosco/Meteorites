@@ -28,20 +28,9 @@ class Users(Controller):
 
 	########## POST ##########      
 	def login_user(self):
-		output = self.models['User'].login(request.form)
-		if output['status'] == True:
-			session['id'] = output['user']['id']
-		else:
-			for message in output['log']:
-				flash(message, 'error')
+		output = self.models['User'].login_user(request.form)
+		session['id'] = request.form['id']
+		session['name'] = request.form['name']
+		for message in output['log']:
+			flash(message)
 		return redirect('/')
-
-	def register_user(self):
-		output = self.models['User'].register(request.form)
-		if output['status'] == True:
-			session['id'] = output['user']['id']
-		else:
-			for message in output['log']:
-				flash(message, 'error')
-		return redirect('/')
-

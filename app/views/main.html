@@ -7,6 +7,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
+	<link rel="stylesheet" type="text/css" href="/static/css/stylesheet.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
 		
 	<!-- Latest compiled and minified CSS -->
@@ -20,6 +21,7 @@
 
 	<!-- Backstretch plugin -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+	<script src="/static/js/background.js"></script>
 
 	<script src="/static/js/main.js"></script>
 
@@ -62,6 +64,14 @@
 
 	<div class='container'>
 	<div class="col-sm-12">
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+						<div class='alert alert-info'>{{message}}</div>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+
 		<div class="panel panel-default">
 			<!-- Default panel contents -->
 			<div class="panel-heading"><h4>All events</h4></div>
@@ -79,32 +89,32 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><a href="/view">Meteor 1</a></td>
+					<td><a href="/view/1">Meteor 1</a></td>
 					<td>September 1, 2016</td>					
 					<td>10</td>					
 					<td>1000</td>					
-					<td><a href=""><button class="btn btn-default going">Going!</button></a></td>					
+					<td><button id="1" class="btn going">Going!</button></td>					
 				</tr>						
 				<tr>
-					<td><a href="/view">Meteor 2</a></td>
+					<td><a href="/view/2">Meteor 2</a></td>
 					<td>September 1, 2016</td>					
 					<td>10</td>					
 					<td>1000</td>					
-					<td><a href=""><button class="btn join">Join</button></a></td>					
+					<td><button id="2" class="btn join">Join</button></td>					
 				</tr>			
 				<tr>
-					<td><a href="/view">Meteor 3</a></td>
+					<td><a href="/view/3">Meteor 3</a></td>
 					<td>September 1, 2016</td>					
 					<td>10</td>					
 					<td>1000</td>					
-					<td><a href=""><button class="btn join">Join</button></a></td>					
+					<td><button id="3" class="btn join">Join</button></td>					
 				</tr>			
 				<tr>
-					<td><a href="/view">Meteor 4</a></td>
+					<td><a href="/view/4">Meteor 4</a></td>
 					<td>September 1, 2016</td>					
 					<td>10</td>					
 					<td>1000</td>					
-					<td><a href=""><button class="btn btn-default going">Going!</button></a></td>					
+					<td><button id="4" class="btn going">Going!</button></td>					
 				</tr>															
 				{% for user in users %}
 					{% if user['id'] != session['user_id'] %}
