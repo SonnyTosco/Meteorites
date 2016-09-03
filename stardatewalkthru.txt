@@ -1,0 +1,19 @@
+Stardate Walkthrough
+
+Functionality:
+Welcome Page
+- Facebook Login
+- Gmail Login
+
+Main Page
+- Join/Going Button
+- Display Meteors
+
+View Event
+- Join/Going Button
+- Google Maps Integration
+- Marker Integration
+- Posting a Meetup
+- Entering in Location for meetup
+- Display date for posted comment
+- display location for posted comment

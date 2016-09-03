@@ -9,7 +9,7 @@
 
 	<link rel="stylesheet" type="text/css" href="/static/css/stylesheet.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
-		
+
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -44,16 +44,16 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="/">Star events</a></li>
-					<li><a href="/users/edit">Profile</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
-						<ul class="dropdown-menu">
+					<!-- <li><a href="/users/edit">Profile</a></li> -->
+					<!-- <li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a> -->
+						<!-- <ul class="dropdown-menu">
 							<li><a href="/users/edit">Edit profile</a></li>
 							<li><a href="/users/show/{{session['user_id']}}">View messages</a></li>
 							<li role="separator" class="divider"></li>
 							<li><a href="/logout">Logout</a></li>
-						</ul>
-					</li>
+						</ul> -->
+					<!-- </li> -->
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/logout">Logout</a></li>
@@ -80,42 +80,42 @@
 			<table class="table">
 			<thead>
 				<tr>
-					<th>Meteor</th>	
-					<th>Date</th>	
-					<th>Diameter (km)</th>	
-					<th>Distance (km)</th>	
-					<th>Joining?</th>	
+					<th>Meteor</th>
+					<th>Date</th>
+					<th>Diameter (km)</th>
+					<th>Distance (km)</th>
+					<th>Joining?</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td><a href="/view/1">Meteor 1</a></td>
-					<td>September 1, 2016</td>					
-					<td>10</td>					
-					<td>1000</td>					
-					<td><button id="1" class="btn going">Going!</button></td>					
-				</tr>						
+					<td>September 1, 2016</td>
+					<td>10</td>
+					<td>1000</td>
+					<td><button id="1" class="btn going">Going!</button></td>
+				</tr>
 				<tr>
 					<td><a href="/view/2">Meteor 2</a></td>
-					<td>September 1, 2016</td>					
-					<td>10</td>					
-					<td>1000</td>					
-					<td><button id="2" class="btn join">Join</button></td>					
-				</tr>			
+					<td>September 1, 2016</td>
+					<td>10</td>
+					<td>1000</td>
+					<td><button id="2" class="btn join">Join</button></td>
+				</tr>
 				<tr>
 					<td><a href="/view/3">Meteor 3</a></td>
-					<td>September 1, 2016</td>					
-					<td>10</td>					
-					<td>1000</td>					
-					<td><button id="3" class="btn join">Join</button></td>					
-				</tr>			
+					<td>September 1, 2016</td>
+					<td>10</td>
+					<td>1000</td>
+					<td><button id="3" class="btn join">Join</button></td>
+				</tr>
 				<tr>
 					<td><a href="/view/4">Meteor 4</a></td>
-					<td>September 1, 2016</td>					
-					<td>10</td>					
-					<td>1000</td>					
-					<td><button id="4" class="btn going">Going!</button></td>					
-				</tr>															
+					<td>September 1, 2016</td>
+					<td>10</td>
+					<td>1000</td>
+					<td><button id="4" class="btn going">Going!</button></td>
+				</tr>
 				{% for user in users %}
 					{% if user['id'] != session['user_id'] %}
 						<tr>

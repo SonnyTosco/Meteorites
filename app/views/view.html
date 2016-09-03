@@ -8,7 +8,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="/static/css/view.css">
-		
+
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -42,7 +42,7 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="/">Star events</a></li>
-					<li><a href="/users/edit">Profile</a></li>
+					<!-- <li><a href="/users/edit">Profile</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
 						<ul class="dropdown-menu">
@@ -51,7 +51,7 @@
 							<li role="separator" class="divider"></li>
 							<li><a href="/logout">Logout</a></li>
 						</ul>
-					</li>
+					</li> -->
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/logout">Logout</a></li>
@@ -82,6 +82,7 @@
 			</tr>
 		</table>
 		<br>
+		<img src="http://quietroomentertainment.com/wp-content/uploads/2013/04/Star-Trek-Logo.png" width="103px" height="139px">
 		<p>You've joined this event! <a href="/">(Leave event)</a></p>
 		<br>
 		<form action="/messages/post" method="POST">
@@ -99,7 +100,7 @@
 				{% else %}
 					<a style="display:inline-block" href="/users/show/{{message['user_id']}}"><b>{{message['name']}}</b></a>
 				{% endif %}
-				<p style="display:inline-block"> - {{message['message_date']}}</p>				
+				<p style="display:inline-block"> - {{message['message_date']}}</p>
 				{% if message['user_id'] == session['user_id'] or session['user_level'] == 'Admin' %}
 					<form style="display:inline-block" class="pull-right" action="/messages/delete/{{user['id']}}/{{message['id']}}" method="POST">
 						<input class="delete_message" type="submit" value="Delete post">
@@ -108,7 +109,7 @@
 				<textarea class="messages" readonly>{{message['message']}}</textarea>
 			</div>
 
-			<div class="col-sm-1"></div>			
+			<div class="col-sm-1"></div>
 			<div class="col-sm-11 comments">
 				{% for comment in comments %}
 					{% if comment['message_id'] == message['id'] %}
@@ -122,7 +123,7 @@
 							<form style="display:inline-block" class="pull-right" action="/comments/delete/{{user['id']}}/{{comment['id']}}" method="POST">
 								<input class="delete_comment" type="submit" value="Delete Comment">
 							</form>
-						{% endif %}								
+						{% endif %}
 						<textarea class="comment" readonly>{{comment['comment']}}</textarea><br><br>
 					{% endif %}
 				{% endfor %}

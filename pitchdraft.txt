@@ -1,0 +1,22 @@
+Meteorites Pitch Ideas
+
+Problem we solve:
+Finding a social way to stargaze
+
+- skit intro
+  - scrolling thru facebook feed for a cool event
+    - get to the event and you can't see it
+      - or you can, but it's not a social experience
+      - that's where Stardate comes in. Stardate is a social community that allows
+      you to connect with other stargazers. We curate events like lunar eclipses and meteor showers
+      so you can enjoy them with old friends or new ones. Think of it as Eventbrite meets stargazing. Let's see how it works.
+
+
+Slides
+
+Pseudo
+- take a given address
+- interpolate the address into a geocode url
+- parse through and get the lat/long
+- take that lat/long data and create a marker for it
+- save that into the database for that specific event
